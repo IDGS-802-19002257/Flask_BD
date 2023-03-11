@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% from '_macros.html' import render_field %}
+
+    <div class="container">
+        <div class="row">
+            <!-- <form name="sent" action="/ABCompleto" id="form1" method="post">
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 float-label-form-group controls">
+                        {{ render_field(form.nombre, class = 'form-group') }}
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 float-label-form-group controls">
+                        {{ render_field(form.apellidos, class = 'form-group') }}
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 float-label-form-group controls">
+                        {{ render_field(form.email, class = 'form-group') }}
+                    </div>
+                </div>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="submit" class="btn btn-danger" id="modificar" name="modificar" value="Modificar">
+                <a href="ABCompleto" class="btn btn-success"><i class="fa-solid fa-rotate-right"></i>Cancelar</a>
+            </form> -->
+            <a href="/" class="btn btn-danger">
+                Agregar
+            </a>
+            <h3>Alumnos IDGS</h3>
+
+            <table class="table table-striped table-border">
+                <thead>
+                    <tr class="tr-head">
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alum in alumno %}
+                        <tr>
+                            <td>{{ alum.nombre }}</td>
+                            <td>{{ alum.apellidos }}</td>
+                            <td>{{ alum.email }}</td>
+                            <td>
+                                <a href="eliminar?id={{ alum.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="modificar?id={{ alum.id }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+{% endblock %}
